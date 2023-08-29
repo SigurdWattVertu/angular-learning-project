@@ -8,8 +8,10 @@ import { IProduct } from '../catalog/product.model';
 })
 export class ProductDetailsComponent {
 
-  @Input() product!: IProduct;
-  @Output() buy = new EventEmitter();
+  // Using an Input decorator on a variable of the component itself
+  @Input() product!: IProduct; // Tells this child component that it CAN recieve data from it's parent
+  @Output() buy = new EventEmitter(); 
+  // Convention here is to use a present tense verb
 
   
 
@@ -24,7 +26,7 @@ export class ProductDetailsComponent {
   }
 
   buyButtonClicked(product: IProduct){
-    this.buy.emit()
+    this.buy.emit()  // The emit method on the eventEmitter that we have created is how we trigger the event
   }
 
 }

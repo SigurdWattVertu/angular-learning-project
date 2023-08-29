@@ -10,26 +10,28 @@ import { ProductService } from './product.service';
 })
 
 export class CatalogComponent {
-    products: any;
+    products: any; // Should be turning this into an IProducts Array...?
     filter: string = '';
-    cart: IProduct[] = [];
 
-    constructor(private carSvc: CartService, private productSvc: ProductService){
+    // Here we are injecting dependencies into the constructor, so we have access to it in this class
+    // Good to inject things into the constructor here so we can do the same thing in our unit tests, called constructor injection
+    constructor(private cartService: CartService, private productService: ProductService){
         
     }
 
     ngOnInit(){
         // This method returns an observable, so we need to call the subscribe method on it
-        this.productSvc.getProducts().subscribe(products => {
+        this.productService.getProducts().subscribe(products => {
             this.products = products;
         });
     }
 
+    // User is clicking the buy button in product-details, this buy event gets emitted all the way to the Cart Service
     addToCart(product: IProduct) {
-      this.carSvc.add(product)
-      console.log('sdf')
+      this.cartService.add(product)
     }
 
+    // It is interesting that when we press ALL get all ALL the products back, seems to me like that should maybe not work..
     getFilteredProducts(){
         return this.filter === ''
         ? this.products

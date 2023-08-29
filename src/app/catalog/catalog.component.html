@@ -9,7 +9,12 @@
 
   <ul class="products">
     <li class="product-item" *ngFor="let product of getFilteredProducts()">
-      <bot-product-details [product]="product" (buy)="addToCart(product)"></bot-product-details>
+      <!-- Loading a child component and passing props, in this case a function and an array item iProduct -->
+      <!-- Here we are listening to the BUY event, and when that is triggered we ping the addToCart() method  -->
+      <bot-product-details 
+        [product]="product" 
+        (buy)="addToCart(product)">
+      </bot-product-details>
     </li>
   </ul>
 </div>
