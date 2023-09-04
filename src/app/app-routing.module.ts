@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './home/home.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CartComponent } from './cart/cart.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 
 const routes: Routes = [
   { 
@@ -21,10 +22,16 @@ const routes: Routes = [
     title: "Cart"
   },
   {
+    path: 'sign-in',
+    component: SignInComponent,
+    pathMatch: 'full'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  }
+  },
+
 ];
 
 @NgModule({

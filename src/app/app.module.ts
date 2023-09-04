@@ -8,6 +8,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from 'src/app/cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SignInComponent } from 'src/app/user/sign-in/sign-in.component';
+import { FormsModule } from '@angular/forms'; // This is how we add template driven forms to an angular app.
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
     SiteHeaderComponent,
     CatalogComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule, // Importing this module so that we can make http calls
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
